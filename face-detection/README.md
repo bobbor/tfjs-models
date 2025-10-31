@@ -1,3 +1,20 @@
+# Fork Notes
+
+The reason for this fork is the fact that bndling this package (including its dependency `@mediapipe/face_detection`) will fail
+when using turbopack bundler.
+
+so the approach would be to check out this repo.
+make changes and then run
+
+`npm test` and `npm build` and
+
+this will create a `.tgz` which can be installed without publishing.
+
+### NOTE
+this _ONLY_ affects the `face-detection` package.
+
+---
+
 # Face Detection
 
 This package provides models for running real-time face detection.

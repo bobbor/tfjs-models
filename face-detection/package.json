@@ -51,7 +51,7 @@
   },
   "scripts": {
     "bundle": "rollup -c",
-    "build": "rimraf dist && tsc && yarn bundle",
+    "build": "rimraf dist && tsc && yarn bundle && yarn pack",
     "publish-local": "yarn build && rollup -c && yalc publish",
     "run-browserstack": "karma start --browserstack",
     "test-node": "NODE_PRESERVE_SYMLINKS=1 ts-node --skip-ignore --project tsconfig.test.json run_tests.ts",
