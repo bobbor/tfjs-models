@@ -1,160 +1,84 @@
-# Pre-trained TensorFlow.js models
+# Face Detection
 
-This repository hosts a set of pre-trained models that have been ported to
-TensorFlow.js.
+This package provides models for running real-time face detection.
 
-The models are hosted on NPM and unpkg so they can be used in any project out of the box. They can be used directly or used in a transfer learning
-setting with TensorFlow.js.
+Currently, we provide 1 model option:
 
-To find out about APIs for models, look at the README in each of the respective
-directories. In general, we try to hide tensors so the API can be used by
-non-machine learning experts.
+#### MediaPipe FaceDetection:
+[Demo](https://storage.googleapis.com/tfjs-models/demos/face-detection/index.html?model=mediapipe_face_detector)
 
-For those interested in contributing a model, please file a [GitHub issue on tfjs](https://github.com/tensorflow/tfjs/issues) to gauge
-interest. We are trying to add models that complement the existing set of models
-and can be used as building blocks in other apps.
+MediaPipe FaceDetection can detect multiple faces, each face contains 6 keypoints.
 
-## Models
+More background information about the package, as well as its performance characteristics on different datasets, can be found here: [Short Range Model Card](https://drive.google.com/file/d/1d4-xJP9PVzOvMBDgIjz6NhvpnlG9_i0S/preview), [Sparse Full Range Model Card](https://drive.google.com/file/d/1aZtpSwsBhA1Epd-ZDfwoQYSTQwEfLm5Z/preview).
 
-<table style="max-width:100%;table-layout:auto;">
-  <tr style="text-align:center;">
-    <th>Type</th>
-    <th>Model</th>
-    <th>Demo</th>
-    <th>Details</th>
-    <th>Install</th>
-  </tr>
-  <!-- Images -->
-  <!-- ** MobileNet -->
-  <tr>
-    <td rowspan="12"><b>Images</b></td>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./mobilenet"><div style='vertical-align:middle; display:inline;'>MobileNet</div></a></b></td>
-    <td><a href="https://storage.googleapis.com/tfjs-models/demos/mobilenet/index.html">live</a></td>
-    <td rowspan="2">Classify images with labels from the <a href="http://www.image-net.org/">ImageNet database</a>.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/mobilenet</code></td>
-  </tr>
-  <tr>
-    <td><a href="./mobilenet/demo/index.html">source</a></td>
-  </tr>
-  <!-- ** Hand -->
-  <tr>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./hand-pose-detection"><div style='vertical-align:middle; display:inline;'>Hand</div></a></b></td>
-    <td><a href="https://storage.googleapis.com/tfjs-models/demos/hand-pose-detection/index.html?model=mediapipe_hands">live</a></td>
-    <td rowspan="2">Real-time hand pose detection in the browser using TensorFlow.js.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/hand-pose-detection</code></td>
-  </tr>
-  <tr>
-    <td><a href="./hand-pose-detection/demos/live_video/index.html">source</a></td>
-  </tr>
-    <!-- ** Pose -->
-  <tr>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./pose-detection"><div style='vertical-align:middle; display:inline;'>Pose</div></a></b></td>
-    <td><a href="https://storage.googleapis.com/tfjs-models/demos/pose-detection/index.html?model=movenet">live</a></td>
-    <td rowspan="2">An API for real-time human pose detection in the browser.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/pose-detection</code></td>
-  </tr>
-  <tr>
-    <td><a href="./pose-detection/demos/live_video/index.html">source</a></td>
-  </tr>
-  <!-- ** Coco SSD -->
-  <tr>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./coco-ssd"><div style='vertical-align:middle; display:inline;'>Coco SSD</div></a></b></td>
-    <td><a href=""></a></td>
-    <td rowspan="2">Object detection model that aims to localize and identify multiple objects in a single image. Based on the <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/README.md">TensorFlow object detection API</a>.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/coco-ssd</code></td>
-  </tr>
-  <tr>
-    <td><a href="./coco-ssd/demo">source</a></td>
-  </tr>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./deeplab"><div style='vertical-align:middle; display:inline;'>DeepLab v3</div></a></b></td>
-    <td><a href=""></a></td>
-    <td rowspan="2">Semantic segmentation</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/deeplab</code></td>
-  </tr>
-  <tr>
-    <td><a href="./deeplab/demo">source</a></td>
-  </tr>
-    <!-- ** Face Landmark Detection -->
-  <tr>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./face-landmarks-detection"><div style='vertical-align:middle; display:inline;'>Face Landmark Detection</div></a></b></td>
-    <td><a href="https://storage.googleapis.com/tfjs-models/demos/face-landmarks-detection/index.html?model=mediapipe_face_mesh">live</a></td>
-    <td rowspan="2">Real-time 3D facial landmarks detection to infer the approximate surface geometry of a human face</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/face-landmarks-detection</code></td>
-  </tr>
-  <tr>
-    <td><a href="./face-landmarks-detection/demos">source</a></td>
-  </tr>
+-------------------------------------------------------------------------------
+## Table of Contents
+1. [How to Run It](#how-to-run-it)
+2. [Example Code and Demos](#example-code-and-demos)
 
-  <!-- * Audio -->
-  <!-- ** Speech Commands -->
-  <tr>
-    <td rowspan="2"><b>Audio</b></td>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./speech-commands"><div style='vertical-align:middle; display:inline;'>Speech Commands</div></a></b></td>
-    <td><a href="https://storage.googleapis.com/tfjs-speech-model-test/2019-01-03a/dist/index.html">live</a></td>
-    <td rowspan="2">Classify 1 second audio snippets from the <a href="https://www.tensorflow.org/tutorials/audio/simple_audio">speech commands dataset</a>.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/speech-commands</code></td>
-  </tr>
-  <tr>
-    <td><a href="./speech-commands/demo/index.html">source</a></td>
-  </tr>
-  <!-- * Text -->
-  <!-- ** Universal Sentence Encoder -->
-  <tr>
-    <td rowspan="4"><b>Text</b></td>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./universal-sentence-encoder"><div style='vertical-align:middle; display:inline;'>Universal Sentence Encoder</div></a></b></td>
-    <td><a href=""></a></td>
-    <td rowspan="2">Encode text into a 512-dimensional embedding to be used as inputs to natural language processing tasks such as sentiment classification and textual similarity.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/universal-sentence-encoder</code></td>
-  </tr>
-  <tr>
-    <td><a href="./universal-sentence-encoder/demo">source</a></td>
-  </tr>
-  <!-- ** Text Toxicity -->
-  <tr>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./toxicity"><div style='vertical-align:middle; display:inline;'>Text Toxicity</div></a></b></td>
-    <td><a href="https://storage.googleapis.com/tfjs-models/demos/toxicity/index.html">live</a></td>
-    <td rowspan="2">Score the perceived impact a comment might have on a conversation, from "Very toxic" to "Very healthy".</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/toxicity</code></td>
-  </tr>
-  <tr>
-    <td><a href="./toxicity/demo/index.html">source</a></td>
-  </tr>
-  <!-- * Depth Estimation -->
-  <!-- ** Portrait Depth -->
-  <tr>
-    <td rowspan="2"><b>Depth Estimation</b></td>
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./depth-estimation"><div style='vertical-align:middle; display:inline;'>Portrait Depth</div></a></b></td>
-    <td><a href="https://storage.googleapis.com/tfjs-models/demos/3dphoto/index.html">live</a></td>
-    <td rowspan="2">Estimate per-pixel depth (the distance to the camera center) for a single portrait image, which can be further used for creative applications such as <a href="https://blog.tensorflow.org/2022/05/portrait-depth-api-turning-single-image.html?linkId=8063793">3D photo</a> and <a href="https://storage.googleapis.com/tfjs-models/demos/relighting/index.html">relighting</a>.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/depth-estimation</code></td>
-  </tr>
-  <tr>
-    <td><a href="./depth-estimation/demos/3d_photo/index.html">source</a></td>
-  </tr>
-  <!-- * General Utilities -->
-  <tr>
-    <td rowspan="2"><b>General Utilities</b></td>
-  <!-- ** KNN Classifier -->
-    <td rowspan="2"><b><a style="white-space:nowrap; display:inline-block;" href="./knn-classifier"><div style='vertical-align:middle; display:inline;'>KNN Classifier</div></a></b></td>
-    <td><a href=""></a></td>
-    <td rowspan="2">This package provides a utility for creating a classifier using the K-Nearest Neighbors algorithm. Can be used for transfer learning.</td>
-    <td rowspan="2"><code>npm i @tensorflow-models/knn-classifier</code></td>
-  </tr>
-  <tr>
-    <td><a href="./knn-classifier/demo">source</a></td>
-  </tr>
-</table>
+-------------------------------------------------------------------------------
+## How to Run It
+In general there are two steps:
 
-## Development
+You first create a detector by choosing one of the models from `SupportedModels`, including `MediaPipeFaceDetector`.
 
-You can run the unit tests for any of the models by running the following
-inside a directory:
+For example:
 
-`yarn test`
+```javascript
+const model = faceDetection.SupportedModels.MediaPipeFaceDetector;
+const detectorConfig = {
+  runtime: 'mediapipe', // or 'tfjs'
+}
+const detector = await faceDetection.createDetector(model, detectorConfig);
+```
 
-New models should have a test NPM script (see [this](./mobilenet/package.json) `package.json` and `run_tests.ts` [helper](./mobilenet/run_tests.ts) for reference).
+Then you can use the detector to detect faces.
 
-To run all of the tests, you can run the following command from the root of this
-repo:
+```
+const faces = await detector.estimateFaces(image);
+```
 
-`yarn presubmit`
+The returned face list contains detected faces for each face in the image.
+If the model cannot detect any faces, the list will be empty.
+
+For each face, it contains a bounding box of the detected face, as well as an array of keypoints. `MediaPipeFaceDetector` returns 6 keypoints.
+Each keypoint contains x and y, as well as a name.
+
+Example output:
+```
+[
+  {
+    box: {
+      xMin: 304.6476503248806,
+      xMax: 502.5079975897382,
+      yMin: 102.16298762367356,
+      yMax: 349.035215984403,
+      width: 197.86034726485758,
+      height: 246.87222836072945
+    },
+    keypoints: [
+      {x: 446.544237446397, y: 256.8054528661723, name: "rightEye"},
+      {x: 406.53152857172876, y: 255.8, "leftEye },
+      ...
+    ],
+  }
+]
+```
+
+The `box` represents the bounding box of the face in the image pixel space, with `xMin`, `xMax` denoting the x-bounds, `yMin`, `yMax` denoting the y-bounds, and `width`, `height` are the dimensions of the bounding box.
+
+For the `keypoints`, x and y represent the actual keypoint position in the image pixel space.
+
+The name provides a label for the keypoint, which are 'rightEye', 'leftEye', 'noseTip', 'mouthCenter', 'rightEarTragion', and 'leftEarTragion' respectively.
+
+Refer to each model's documentation for specific configurations for the model
+and their performance.
+
+[MediaPipeFaceDetector MediaPipe Documentation](https://github.com/tensorflow/tfjs-models/tree/master/face-detection/src/mediapipe)
+
+[MediaPipeFaceDetector TFJS Documentation](https://github.com/tensorflow/tfjs-models/tree/master/face-detection/src/tfjs)
+
+## Example Code and Demos
+You may reference the demos for code examples. Details for how to run the demos
+are included in the `demos/`
+[folder](https://github.com/tensorflow/tfjs-models/tree/master/face-detection/demos).
