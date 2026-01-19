@@ -53,7 +53,7 @@ exports.load = exports.MediaPipeFaceDetectorMediaPipe = void 0;
  * limitations under the License.
  * =============================================================================
  */
-var faceDetection = require("@mediapipe/face_detection");
+var face_detection_1 = require("@mediapipe/face_detection");
 var tf = require("@tensorflow/tfjs-core");
 var constants_1 = require("../constants");
 var association_norm_rect_1 = require("../shared/calculators/association_norm_rect");
@@ -70,7 +70,7 @@ var MediaPipeFaceDetectorMediaPipe = /** @class */ (function () {
         this.width = 0;
         this.height = 0;
         this.selfieMode = false;
-        this.faceDetectorSolution = new faceDetection.FaceDetection({
+        this.faceDetectorSolution = new face_detection_1.default.FaceDetection({
             locateFile: function (path, base) {
                 if (config.solutionPath) {
                     var solutionPath = config.solutionPath.replace(/\/+$/, '');

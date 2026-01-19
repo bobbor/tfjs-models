@@ -20,6 +20,8 @@
     (global = global || self, factory(global.faceDetection = {}, global.globalThis, global.tf, global.tf));
 }(this, (function (exports, faceDetection, tf, tfconv) { 'use strict';
 
+    faceDetection = faceDetection && Object.prototype.hasOwnProperty.call(faceDetection, 'default') ? faceDetection['default'] : faceDetection;
+
     /******************************************************************************
     Copyright (c) Microsoft Corporation.
 
